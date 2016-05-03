@@ -1,0 +1,16 @@
+
+# Created by https://www.gitignore.io/api/netbeans,vagrant
+
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+.nb-gradle/
+
+
+### Vagrant ###
+.vagrant/
+
