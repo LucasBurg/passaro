@@ -20,6 +20,8 @@ msgstr ""
 #: ../view/layout/layout.phtml:33
 msgid "Skeleton Application"
 msgstr "Aplicação Skeleton"
+msgid "Bird"
+msgstr "Pássaro"
 
 #: ../view/layout/layout.phtml:36
 msgid "Home"
