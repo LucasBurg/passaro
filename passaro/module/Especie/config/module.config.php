@@ -1,27 +1,27 @@
 <?php
-return array(
-    'controllers' => array(
-        'invokables' => array(
-            'Especie\Controller\Index' => 'Especie\Controller\IndexController',
-        ),
-    ),
-    'view_manager' => array(
-        'template_path_stack' => array(
+return [
+    'controllers' => [
+        'invokables' => [
+            'Especie\Controller\Especie' => 'Especie\Controller\EspecieController',
+        ]
+    ],
+    'view_manager' => [
+        'template_path_stack' => [
             'especie' => __DIR__ . '/../view',
-        ),
-    ),
-    'router' => array(
-        'routes' => array(
-            'especies' => array(
+        ]
+    ],
+    'router' => [
+        'routes' => [
+            'especie' => [
                 'type' => 'Literal',
-                'options' => array(
+                'options' => [
                     'route' => '/especies',
-                    'defaults' => array(
-                        'controller' => 'Especie\Controller\Index',
+                    'defaults' => [
+                        'controller' => 'Especie\Controller\Especie',
                         'action' => 'index'
-                    ) 
-                )
-            )
-        )
-    )
-);
+                    ]
+                ]
+            ]
+        ]
+    ]
+];
