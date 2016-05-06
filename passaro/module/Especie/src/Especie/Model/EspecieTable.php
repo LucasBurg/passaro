@@ -28,5 +28,20 @@ class EspecieTable
         }
         throw new Exception("Espécie não encontrada. [id = {$id}]");
     }
+    
+    public function save(Especie $especie)
+    {
+        $data = [
+            'nome' => $especie->nome
+        ];
+        
+        if ($especie->id) {
+            $this->tableGateway->update($data, ['id' => $especie->id]);
+        } else {
+            $this->tableGateway->insert($data);
+        }
+        
+        return true;
+    }
 }
 

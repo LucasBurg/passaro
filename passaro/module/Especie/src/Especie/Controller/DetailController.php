@@ -13,14 +13,18 @@ class DetailController extends AbstractActionController
     public function indexAction()
     {
         $id = $this->params()->fromRoute('id', 0);
-        $row = $this->getEspecieTable()->fetchOne($id);
-        
+        $especie = $this->getEspecieTable()->fetchOne($id);
         $form = new EspecieForm();
-        
-        $form->bind($row);
-        
-        
-        return ['id' => $id, 'especie' => $row, 'form' => $form];
+        $form->bind($especie);
+        $req = $this->getRequest();
+        if ($req->isPost()) {
+            $form->setData($req->getPost());
+            if ($form->isValid()) {
+                $this->getEspecieTable()->save($especie);
+                return $this->redirect()->toRoute('especies');
+            }
+        } 
+        return ['id' => $id, 'form' => $form];
     }
     
     private function getEspecieTable()
