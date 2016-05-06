@@ -1,1 +1,36 @@
-eu sou o index
+<?php 
+$title = 'Lista de Espécies';
+$this->headTitle($title);
+?>
+<div class="row">
+    <div class="col-md-12">
+        <h1><?=$title?></h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="col-md-1 text-center">ID</th>
+                    <th>Nome</th>
+                    <th class="col-md-2 text-center">#</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+                    foreach ($this->especies as $especie) : 
+                        $url = $this->url('especies/detail', ['id' => $especie->id]);    
+                ?>
+                <tr>
+                    <td class="text-center"><?=$especie->id?></td>
+                    <td><?=$especie->nome?></td>
+                    <td class="text-center">
+                        <a href="<?=$url?>">Detalhes</a>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
