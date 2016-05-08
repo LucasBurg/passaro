@@ -10,6 +10,7 @@ return [
         'invokables' => [
             'Especie\Controller\Especie' => 'Especie\Controller\EspecieController',
             'Especie\Controller\Detail' => 'Especie\Controller\DetailController',
+            'Especie\Controller\Write' => 'Especie\Controller\WriteController'
         ]
     ],
     'view_manager' => [
@@ -42,6 +43,16 @@ return [
                                 'id' => '[1-9]+',
                             ]
                         ]
+                    ],
+                    'add' => [
+                        'type' => 'Literal',
+                        'options' => [
+                            'route' => '/add',
+                            'defaults' => [
+                                'controller' => 'Especie\Controller\Write',
+                                'action' => 'add'
+                            ]
+                        ]    
                     ]
                 ]
             ]

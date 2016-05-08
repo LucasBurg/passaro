@@ -1,0 +1,17 @@
+<?php
+$title = 'Adicionar uma espécie';
+$this->headTitle($title);
+?>
+
+
+
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('especies/add'));
+$form->prepare();
+echo $this->form()->openTag();
+echo $this->formCollection($form);
+echo $this->form()->closeTag();
+
+?>
+
