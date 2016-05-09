@@ -1,5 +1,5 @@
-<?php
-$title = "Espécie {$id}";
+<?php 
+$title = 'Nova de Espécie';
 $this->headTitle($title);
 ?>
 <div class="row">
@@ -10,15 +10,16 @@ $this->headTitle($title);
 <div class="row">
     <div class="col-md-12">
         <?php
+        
         $form = $this->form;
-        $url = $this->url('especies/detail', ['id' => $id]);
-        $form->setAttribute('action', $url);
-        $form->prepare();
+        
+        $form->setAttribute('action', $this->url());
+        
         echo $this->form()->openTag($form);
         echo $this->formCollection($form);
-        echo $this->form()->closeTag($form);       
+        echo $this->form()->closeTag($form);
+            
+        
         ?>
     </div>
-</div>s
-
-
+</div>

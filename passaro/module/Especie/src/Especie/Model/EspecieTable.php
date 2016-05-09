@@ -2,6 +2,7 @@
 namespace Especie\Model;
 
 use Zend\Db\TableGateway\TableGateway;
+use Exception;
 
 class EspecieTable 
 {
@@ -42,6 +43,23 @@ class EspecieTable
         }
         
         return true;
+    }
+    
+    public function getLastId()
+    {
+        return $this->tableGateway->getLastInsertValue();
+    }
+    
+    public function delete($id)
+    {
+        $especie = $this->fetchOne($id);
+        
+        if ($especie->id) {
+            $this->tableGateway->delete(['id' => $especie->id]);
+            return true;
+        }
+        
+        return false;
     }
 }
 

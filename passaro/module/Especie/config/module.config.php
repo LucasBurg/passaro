@@ -8,9 +8,7 @@ return [
     ],    
     'controllers' => [
         'invokables' => [
-            'Especie\Controller\Especie' => 'Especie\Controller\EspecieController',
-            'Especie\Controller\Detail' => 'Especie\Controller\DetailController',
-            'Especie\Controller\Write' => 'Especie\Controller\WriteController'
+            'Especie\Controller\Especie' => 'Especie\Controller\EspecieController'
         ]
     ],
     'view_manager' => [
@@ -36,23 +34,21 @@ return [
                         'options' => [
                             'route' => '/:id',
                             'defaults' => [
-                                'controller' => 'Especie\Controller\Detail',
-                                'action' => 'index'
+                                'action' => 'detail'
                             ],
                             'constraints' => [
-                                'id' => '[1-9]+',
+                                'id' => '[0-9]+',
                             ]
                         ]
                     ],
-                    'add' => [
+                    'new' => [
                         'type' => 'Literal',
                         'options' => [
-                            'route' => '/add',
+                            'route' => '/novo',
                             'defaults' => [
-                                'controller' => 'Especie\Controller\Write',
-                                'action' => 'add'
+                                'action' => 'new'
                             ]
-                        ]    
+                        ]
                     ]
                 ]
             ]

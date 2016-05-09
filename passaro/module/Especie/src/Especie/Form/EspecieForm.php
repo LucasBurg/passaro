@@ -22,11 +22,30 @@ class EspecieForm extends Form
             ]
         ]);
         $this->add([
-            'name' => 'submit',
+            'name' => 'submit_save',
             'type' => 'submit',
             'attributes' => [
                 'value' => 'Salvar',
-                'id' => 'btn_salvar'
+                'id' => 'btn_save',
+                'class' => 'btn btn-primary'
+            ]
+        ]);
+        $this->add([
+            'name' => 'submit_delete',
+            'type' => 'submit',
+            'attributes' => [
+                'value' => 'Deletar',
+                'id' => 'btn_delete',
+                'class' => 'btn btn-danger'
+            ]
+        ]);
+        $this->add([
+            'name' => 'submit_new',
+            'type' => 'submit',
+            'attributes' => [
+                'value' => 'Novo',
+                'id' => 'btn_new',
+                'class' => 'btn btn-default'
             ]
         ]);
     }
