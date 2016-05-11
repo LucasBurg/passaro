@@ -1,1 +1,22 @@
-
+<?php
+$title = 'Editar um pássaro';
+$this->headTitle($title);
+?>
+<div class="row">
+    <div class="col-md-12">
+        <h1><?=$title?></h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <?php
+        $form = $this->form;
+        $form->setAttribute('action', $this->url('passaros', 
+                ['action' => 'edit', 'id' => $id]));
+        $form->prepare();
+        echo $this->form()->openTag($form);
+        echo $this->formCollection($form);
+        echo $this->form()->closeTag($form);
+        ?>
+    </div>
+</div>

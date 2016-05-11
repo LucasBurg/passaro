@@ -34,7 +34,7 @@ class Passaro
     
     public function getArrayCopy()
     {
-        return get_class_vars($this);
+        return get_object_vars($this);
     }
 }
 
