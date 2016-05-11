@@ -14,6 +14,21 @@ class PassaroController extends AbstractActionController
         return ['passaros' => $passaros];
     }
     
+    public function addAction()
+    {
+        return [];
+    }
+    
+    public function editAction()
+    {
+        return [];
+    }
+    
+    public function deleteAction()
+    {
+        return [];
+    }
+    
     private function getPassaroTable() 
     {
         if ($this->passaroTable) {

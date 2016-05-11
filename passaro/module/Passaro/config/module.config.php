@@ -19,12 +19,16 @@ return [
     'router' => [
         'routes' => [
             'passaros' => [
-                'type' => 'Literal',
+                'type' => 'Segment',
                 'options' => [
-                    'route' => '/passaros',
+                    'route' => '/passaros[/:action[/:id]]',
                     'defaults' => [
                         'controller' => 'Passaro\Controller\Passaro',
                         'action' => 'index'
+                    ],
+                    'constraints' => [
+                        'action' => '(add|edit|delete)',
+                        'id' => '[0-9]+'
                     ]
                 ]
             ]
