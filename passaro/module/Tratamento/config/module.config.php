@@ -1,8 +1,17 @@
 <?php
 return [
+    'service_manager' => [
+        'factories' => [
+            'TratamentoTableGateway' => 'Tratamento\Factory\TratamentoTableGatewayFactory',
+            'TratamentoTable' => 'Tratamento\Factory\TratamentoTableFactory'
+        ]
+    ],
     'controllers' => [
         'invokables' => [
-            'Tratamento\Controller\Tratamento' => 'Tratamento\Controller\TratamentoController',
+            //'Tratamento\Controller\Tratamento' => 'Tratamento\Controller\TratamentoController',
+        ],
+        'factories' => [
+            'Tratamento\Controller\Tratamento' => 'Tratamento\Factory\TratamentoControllerFactory',
         ]
     ],
     'view_manager' => [
