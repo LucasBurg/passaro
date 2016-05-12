@@ -20,12 +20,22 @@ class TratamentoTable
         return $this->tableGateway->select();
     }
     
+    public function fetchOne($id)
+    {
+        $id = (int) $id;
+        $rowSet = $this->tableGateway->select(['id' => $id]);
+        $row = $rowSet->current();
+        if ($row) {
+            return $row;
+        }
+        throw new Exception("O registro não foi encontrado. [id => {$id}]");
+    }
+    
     public function save(Tratamento $tratamento)
     {
         $data = [
             'nome' => $tratamento->nome    
         ];
-        
         try {
             if ($tratamento->id) {
                 $this->tableGateway->update($data, ['id' => $tratamento->id]);
@@ -35,6 +45,21 @@ class TratamentoTable
         } catch (Exception $ex) {
             throw new Exception('Não foi possivel salvar o tratamento.');
         }
+    }
+    
+    public function delete($id)
+    {
+        $id = (int) $id;
+        $row = $this->fetchOne($id);
+        if ($row) {
+            //$this->tableGateway->delete(['id' => $id]);
+            $row->delete();
+        }
+    }
+    
+    public function getLastId()
+    {
+        return $this->tableGateway->getLastInsertValue();
     }
 }
 
