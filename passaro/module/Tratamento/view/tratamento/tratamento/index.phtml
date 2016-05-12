@@ -9,7 +9,10 @@ $this->headTitle($title);
 </div>
 <div class="row">
     <div class="col-md-12">
-        <a href="#" class="btn btn-default">Adicionar</a>
+        <?php
+        $urlAdd = $this->url('tratamentos', ['action' => 'add']);
+        ?>
+        <a href="<?=$urlAdd?>" class="btn btn-default">Adicionar</a>
     </div>
 </div>
 <div class="row">
@@ -29,10 +32,13 @@ $this->headTitle($title);
                     <td><?=$tratamento->nome?></td>
                     <td class="col-md-2 text-center">
                         <?php
-                        
+                        $urlEdit = $this->url('tratamentos', 
+                                ['action' => 'edit', 'id' => $tratamento->id]);
+                        $urlDelete = $this->url('tratamentos', 
+                                ['action' => 'delete', 'id' => $tratamento->id]);
                         ?>
-                        <a href="#" class="btn btn-primary">Editar</a>
-                        <a href="#" class="btn btn-danger">Deletar</a>
+                        <a href="<?=$urlEdit?>" class="btn btn-primary">Editar</a>
+                        <a href="<?=$urlDelete?>" class="btn btn-danger">Deletar</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
