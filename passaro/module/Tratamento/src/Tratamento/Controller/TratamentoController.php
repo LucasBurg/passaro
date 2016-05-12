@@ -5,6 +5,7 @@ namespace Tratamento\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 
 use Tratamento\Form\TratamentoForm;
+use Tratamento\Model\TratamentoTable;
 
 class TratamentoController extends AbstractActionController 
 {
@@ -13,27 +14,25 @@ class TratamentoController extends AbstractActionController
     private $form;
     
     public function __construct(
-        TratamentoForm $form
+        TratamentoForm $form,
+        TratamentoTable $tratamentoTable
     ) {
         $this->form = $form;
+        $this->tratamentoTable = $tratamentoTable;
     }
-    
     
     public function indexAction()
     {
-        $resultSet = $this->getTratamentoTable()->fetchAll();
+        $resultSet = $this->tratamentoTable->fetchAll();
         return ['tratamentos' => $resultSet];
     }
     
     public function addAction()
     {
         $req = $this->getRequest();
-        
         if ($req->isPost()) {
             $this->saveAction($this->form, $req);
         }
-        
-        
         return ['form' => $this->form];
     }
     
@@ -54,20 +53,9 @@ class TratamentoController extends AbstractActionController
     {
         $form->setData($req->getPost());
         if ($form->isValid()) {
-            $this->getTratamentoTable()->save($form->getData());
+            $this->tratamentoTable->save($form->getData());
         }
         
-    }
-    
-    /**
-     * Retorna um tableGateway da table tratamento
-     */
-    private function getTratamentoTable()
-    {
-        if (!$this->tratamentoTable) {
-            $this->tratamentoTable = $this->getServiceLocator()->get('TratamentoTable');
-        }
-        return $this->tratamentoTable;
     }
 }
 
