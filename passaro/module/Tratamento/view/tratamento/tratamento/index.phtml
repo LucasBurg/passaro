@@ -1,1 +1,42 @@
-
+<?php
+$title = 'Lista de Tratamentos';
+$this->headTitle($title);
+?>
+<div class="row">
+    <div class="col-md-12">
+        <h1><?=$title?></h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <a href="#" class="btn btn-default">Adicionar</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="col-md-1 text-center">ID</th>
+                    <th>Nome</th>
+                    <th class="col-md-2 text-center">#</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($tratamentos as $tratamento) : ?>
+                <tr>
+                    <td class="col-md-1 text-center"><?=$tratamento->id?></td>
+                    <td><?=$tratamento->nome?></td>
+                    <td class="col-md-2 text-center">
+                        <?php
+                        
+                        ?>
+                        <a href="#" class="btn btn-primary">Editar</a>
+                        <a href="#" class="btn btn-danger">Deletar</a>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
