@@ -17,7 +17,7 @@ class TratamentoControllerFactory implements FactoryInterface
         $form = new TratamentoForm();
         $form->setInputFilter(new TratamentoFilter());
         $form->bind(new Tratamento());
-        $tratamentotable = $serviceLocator->get('TratamentoTable');
+        $tratamentotable = $serviceLocator->getServiceLocator()->get('TratamentoTable');
         return new TratamentoController($form, $tratamentotable);
     }
 

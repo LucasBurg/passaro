@@ -31,31 +31,53 @@ class TratamentoController extends AbstractActionController
     {
         $req = $this->getRequest();
         if ($req->isPost()) {
-            $this->saveAction($this->form, $req);
+            $this->saveAction($req);
         }
         return ['form' => $this->form];
     }
     
     public function editAction()
     {
-        return [];
+        $id = (int) $this->params()->fromRoute('id');
+        if (!$id) {
+            return $this->redirect()->toRoute('tratamentos');
+        }
+        $tratamento = $this->tratamentoTable->fetchOne($id);
+        $req = $this->getRequest();
+        if ($req->isPost()) {
+            $this->saveAction($req);
+            return $this->redirect()->toRoute('tratamentos');
+        }
+        $this->form->bind($tratamento);
+        return ['form' => $this->form, 'id' => $id];
     }
     
     public function deleteAction()
     {
-        return [];
+        $id = (int) $this->params()->fromRoute('id');
+        if (!$id) {
+            return $this->redirect()->toRoute('tratamentos');
+        }
+        $req = $this->getRequest();
+        if ($req->isPost()) {
+            if ($req->getPost()->get('delete') == 'S') {
+                $this->tratamentoTable->delete($id);
+            }
+            return $this->redirect()->toRoute('tratamentos');
+        }
+        $tratamento = $this->tratamentoTable->fetchOne($id);
+        return ['tratamento' => $tratamento];
     }
     
     /**
      * Salva os posts
      */
-    private function saveAction($form, $req)
+    private function saveAction($req)
     {
-        $form->setData($req->getPost());
-        if ($form->isValid()) {
-            $this->tratamentoTable->save($form->getData());
+        $this->form->setData($req->getPost());
+        if ($this->form->isValid()) {
+            $this->tratamentoTable->save($this->form->getData());
         }
-        
     }
 }
 

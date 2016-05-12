@@ -3,8 +3,8 @@
 namespace Tratamento\Model;
 
 use Zend\Db\TableGateway\TableGateway;
-
 use Tratamento\Model\Tratamento;
+use Exception;
 
 class TratamentoTable 
 {
@@ -52,8 +52,7 @@ class TratamentoTable
         $id = (int) $id;
         $row = $this->fetchOne($id);
         if ($row) {
-            //$this->tableGateway->delete(['id' => $id]);
-            $row->delete();
+            $this->tableGateway->delete(['id' => $id]);
         }
     }
     
