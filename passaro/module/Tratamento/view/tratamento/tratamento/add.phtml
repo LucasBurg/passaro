@@ -1,0 +1,22 @@
+<?php
+$title = 'Adicionar um tratamento';
+$this->headTitle($title);
+?>
+<div class="row">
+    <div class="col-md-12">
+        <h1><?=$title?></h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <?php
+        $form = $this->form;
+        $form->setAttribute('action', 
+                $this->url('tratamentos', 
+                        ['action' => 'add']));
+        echo $this->form()->openTag($form);
+        echo $this->formCollection($form);
+        echo $this->form()->closeTag($form);
+        ?>
+    </div>
+</div>

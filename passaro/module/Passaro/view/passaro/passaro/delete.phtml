@@ -1,0 +1,24 @@
+<?php
+$title = 'Deletar um pássaro';
+$this->headTitle($title);
+?>
+<div class="row">
+    <div class="col-md-12">
+        <h1><?=$title?></h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <?php
+        $urlDelete = $this->url('passaros',
+                ['action' => 'delete', 'id' => $id]);
+        ?>
+        
+        <form name="delete" action="<?=$urlDelete?>" method="post">
+            <p>Você deseja deletar o registro : </p>
+            <p><?=$passaro->id.' '.$passaro->nome?></p>
+            <button type="submit" name="delete" value="S" class="btn btn-danger">Sim</button>
+            <button type="submit" name="delete" value="N" class="btn btn-default">Não</button>
+        </form>
+    </div>
+</div>

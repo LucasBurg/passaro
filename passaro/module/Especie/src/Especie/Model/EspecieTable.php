@@ -61,5 +61,18 @@ class EspecieTable
         
         return false;
     }
+    
+    /**
+     * Retorna um array estruturado para options do elemento select
+     */
+    public function fetchOptionsSelect()
+    {
+        $especies = $this->fetchAll();
+        $optionsSelect = [];
+        foreach ($especies as $especie) {
+            $optionsSelect[$especie->id] = $especie->nome;
+        }
+        return $optionsSelect;
+    }
 }
 

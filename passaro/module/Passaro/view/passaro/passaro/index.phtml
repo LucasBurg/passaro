@@ -1,0 +1,53 @@
+<?php
+$title = 'Lista de Pássaros';
+$this->headTitle($title);
+?>
+<div class="row">
+    <div class="col-md-12">
+        <h1><?=$title?></h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <?php
+        $urlAdd = $this->url('passaros', ['action' => 'add']);
+        ?>
+        
+        <a href="<?=$urlAdd?>" class="btn btn-default">Adicionar</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="col-md-1 text-center">ID</th>
+                    <th class="col-md-2 text-center">ID Espécie</th>
+                    <th>Nome</th>
+                    <th class="col-md-2 text-center">#</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($this->passaros as $passaro) : ?>
+                <tr>
+                    <td class="text-center"><?=$passaro->id?></td>
+                    <td class="text-center"><?=$passaro->especie_id?></td>
+                    <td><?=$passaro->nome?></td>
+                    <td class="col-md-2 text-center">
+                        <?php
+                        $urlEdit = $this->url('passaros', 
+                                ['action' => 'edit', 'id' => $passaro->id]);
+                        
+                        $urlDelete = $this->url('passaros', 
+                                ['action' => 'delete', 'id' => $passaro->id]);
+                        ?>
+                        
+                        <a href="<?=$urlEdit?>" class="btn btn-primary">Editar</a>
+                        <a href="<?=$urlDelete?>" class="btn btn-danger">Deletar</a>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
