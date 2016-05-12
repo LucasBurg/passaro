@@ -32,6 +32,7 @@ class TratamentoController extends AbstractActionController
         $req = $this->getRequest();
         if ($req->isPost()) {
             $this->saveAction($req);
+            return $this->redirect()->toRoute('tratamentos');
         }
         return ['form' => $this->form];
     }
