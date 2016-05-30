@@ -7,11 +7,9 @@ return [
         ]
     ],
     'controllers' => [
-        'invokables' => [
-            //'Tratamento\Controller\Tratamento' => 'Tratamento\Controller\TratamentoController',
-        ],
         'factories' => [
             'Tratamento\Controller\Tratamento' => 'Tratamento\Factory\TratamentoControllerFactory',
+            'Periodo\Controller\Periodo' => 'Periodo\Factory\PeriodoControllerFactory'
         ]
     ],
     'view_manager' => [
@@ -34,7 +32,21 @@ return [
                         'id' => '[0-9]+'
                     ]
                 ]
-            ]
+            ],
+            'periodos' => [
+                'type' => 'segment',
+                'options' => [
+                    'route' => '/periodos[/:action[/:id]]',
+                    'defaults' => [
+                        'controller' => 'Periodo\Controller\Periodo',
+                        'action' => 'index'
+                    ],
+                    'constraints' => [
+                        'action' => '(add|edit|delete)',
+                        'id' => '[0-9]+'
+                    ]
+                ]
+            ],
         ]
     ]
 ];

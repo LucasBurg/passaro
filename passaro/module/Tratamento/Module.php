@@ -8,7 +8,9 @@ class Module
         return [
             'Zend\Loader\StandardAutoloader' => [
                 'namespaces' => [
-                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
+                    'Tratamento' => __DIR__ . '/src/Tratamento',
+                    'Periodo'    => __DIR__ . '/src/Periodo',
+                    'Indicacao'  => __DIR__ . '/src/Indicacao',
                 ]
             ]
         ];
