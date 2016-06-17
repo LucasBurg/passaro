@@ -52,4 +52,9 @@ class TratamentoIndicacaoTable
     {
         return $this->tableGateway->getLastInsertValue();
     }
+    
+    public function delete(TratamentoIndicacaoModel $model)
+    {
+        $this->tableGateway->delete(['id' => $model->id]);
+    }
 }

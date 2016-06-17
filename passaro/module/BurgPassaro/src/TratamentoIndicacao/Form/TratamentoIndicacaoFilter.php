@@ -52,7 +52,7 @@ class TratamentoIndicacaoFilter extends InputFilter
                 [
                     'name' => 'StringLength',
                     'options' => [
-                        'max' => 255
+                        'max' => 100
                     ]
                 ]
             ]

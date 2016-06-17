@@ -36,7 +36,9 @@ class TratamentoIndicacaoForm extends Form
                 'label' => 'Descrição'
             ],
             'attributes' => [
-                'class' => 'form-control'
+                'class' => 'form-control',
+                'cols' => 100,
+                'rows' => 10
             ]
         ]);
         

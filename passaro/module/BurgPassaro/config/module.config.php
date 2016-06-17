@@ -9,7 +9,8 @@ return [
     'controllers' => [
         'invokables' => [
             'TratamentoIndicacaoIndex' => 'TratamentoIndicacao\Controller\IndexController',
-            'TratamentoIndicacaoWrite' => 'TratamentoIndicacao\Controller\WriteController'
+            'TratamentoIndicacaoWrite' => 'TratamentoIndicacao\Controller\WriteController',
+            'TratamentoIndicacaoDelete' => 'TratamentoIndicacao\Controller\DeleteController'
         ]
     ],
     'view_manager' => [
@@ -50,6 +51,16 @@ return [
                             'defaults' => [
                                 'controller' => 'TratamentoIndicacaoWrite',
                                 'action' => 'add'
+                            ]
+                        ]
+                    ],
+                    'delete' => [
+                        'type' => 'segment',
+                        'options' => [
+                            'route' => '/delete/:id',
+                            'defaults' => [
+                                'controller' => 'TratamentoIndicacaoDelete',
+                                'action' => 'delete'
                             ]
                         ]
                     ]

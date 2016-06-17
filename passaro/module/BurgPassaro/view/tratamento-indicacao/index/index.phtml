@@ -26,7 +26,8 @@ $this->headTitle($title);
             <tbody>
                 <?php 
                     foreach ($this->indicacoes as $indicacao) : 
-                        $url = $this->url('tratamento_indicacao/edit', ['id' => $indicacao->id]);    
+                        $url = $this->url('tratamento_indicacao/edit', ['id' => $indicacao->id]); 
+                        $urlDelete = $this->url('tratamento_indicacao/delete', ['id' => $indicacao->id]);
                 ?>
                 <tr>
                     <td class="text-center"><?=$indicacao->id?></td>
@@ -34,6 +35,7 @@ $this->headTitle($title);
                     <td><?=$indicacao->descricao?></td>
                     <td>
                         <a href="<?=$url?>" class="btn btn-default">Editar</a>
+                        <a href="<?=$urlDelete?>" class="btn btn-danger">Deletar</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
