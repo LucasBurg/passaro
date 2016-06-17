@@ -1,1 +1,41 @@
-<h1>Ola mundo</h1>
+<?php 
+$title = 'Lista de Indicações para o tratamento';
+$this->headTitle($title);
+?>
+<div class="row">
+    <div class="col-md-12">
+        <h1><?=$title?></h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <a href="<?=$this->url('tratamento_indicacao', [])?>" class="btn btn-default">Adicionar uma indicação</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="col-md-1 text-center">ID</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th class="col-md-2 text-center">#</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+                    foreach ($this->indicacoes as $indicacao) : 
+                        //$url = $this->url('especies/detail', ['id' => $indicacao->id]);    
+                ?>
+                <tr>
+                    <td class="text-center"><?=$indicacao->id?></td>
+                    <td><?=$indicacao->nome?></td>
+                    <td><?=$indicacao->descricao?></td>
+                    <td>---</td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>

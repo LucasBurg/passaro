@@ -2,6 +2,8 @@
 return [
     'service_manager' => [
         'factories' => [
+            'TratamentoIndicacaoTableGateway' => 'TratamentoIndicacao\Factory\TratamentoIndicacaoTableGatewayFactory',
+            'TratamentoIndicacaoTable' => 'TratamentoIndicacao\Factory\TratamentoIndicacaoTableFactory'
         ]
     ],    
     'controllers' => [
