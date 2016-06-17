@@ -28,4 +28,28 @@ class TratamentoIndicacaoTable
         }
         throw new Exception("Não foi possível encontrar a indicação com o id {$id}");
     }
+    
+    public function save(TratamentoIndicacaoModel $model) 
+    {
+        $data = [
+            'nome' => $model->nome,
+            'descricao' => $model->descricao
+        ];
+        
+        try {
+            if ($model->id) {
+                $this->tableGateway->update($data, ['id' => $model->id]);
+            } else {
+                $this->tableGateway->insert($data);
+            }
+            return true;
+        } catch (Exception $ex) {
+            throw new Exception($ex->getMessage());
+        }
+    }
+    
+    public function getLastId() 
+    {
+        return $this->tableGateway->getLastInsertValue();
+    }
 }

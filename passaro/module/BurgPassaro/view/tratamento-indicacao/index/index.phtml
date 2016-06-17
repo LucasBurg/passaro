@@ -9,7 +9,7 @@ $this->headTitle($title);
 </div>
 <div class="row">
     <div class="col-md-12">
-        <a href="<?=$this->url('tratamento_indicacao', [])?>" class="btn btn-default">Adicionar uma indicação</a>
+        <a href="<?=$this->url('tratamento_indicacao/add', [])?>" class="btn btn-default">Adicionar uma indicação</a>
     </div>
 </div>
 <div class="row">
@@ -26,13 +26,15 @@ $this->headTitle($title);
             <tbody>
                 <?php 
                     foreach ($this->indicacoes as $indicacao) : 
-                        //$url = $this->url('especies/detail', ['id' => $indicacao->id]);    
+                        $url = $this->url('tratamento_indicacao/edit', ['id' => $indicacao->id]);    
                 ?>
                 <tr>
                     <td class="text-center"><?=$indicacao->id?></td>
                     <td><?=$indicacao->nome?></td>
                     <td><?=$indicacao->descricao?></td>
-                    <td>---</td>
+                    <td>
+                        <a href="<?=$url?>" class="btn btn-default">Editar</a>
+                    </td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>

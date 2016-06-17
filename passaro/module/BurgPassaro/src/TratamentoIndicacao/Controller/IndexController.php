@@ -15,7 +15,6 @@ class IndexController extends AbstractActionController
         return new ViewModel($data);
     }
     
-    
     private function getTratamentoIndicacaoTable()
     {
         if ($this->tratamentoIndicacaoTable) {
@@ -24,5 +23,4 @@ class IndexController extends AbstractActionController
         $this->tratamentoIndicacaoTable = $this->getServiceLocator()->get('TratamentoIndicacaoTable');
         return $this->tratamentoIndicacaoTable;
     }
-
 }

@@ -8,7 +8,8 @@ return [
     ],    
     'controllers' => [
         'invokables' => [
-            'TratamentoIndicacaoIndex' => 'TratamentoIndicacao\Controller\IndexController'
+            'TratamentoIndicacaoIndex' => 'TratamentoIndicacao\Controller\IndexController',
+            'TratamentoIndicacaoWrite' => 'TratamentoIndicacao\Controller\WriteController'
         ]
     ],
     'view_manager' => [
@@ -19,12 +20,38 @@ return [
     'router' => [
         'routes' => [
             'tratamento_indicacao' => [
-                'type' => 'Literal',
+                'type' => 'literal',
                 'options' => [
                     'route' => '/tratamento_indicacao',
                     'defaults' => [
                         'controller' => 'TratamentoIndicacaoIndex',
                         'action' => 'index'
+                    ]
+                ],
+                'may_terminate' => true,
+                'child_routes' => [
+                    'edit' => [
+                        'type' => 'segment',
+                        'options' => [
+                            'route' => '/edit/:id',
+                            'defaults' => [
+                                'controller' => 'TratamentoIndicacaoWrite',
+                                'action' => 'edit'
+                            ],
+                            'constraints' => [
+                                'id' => '[0-9]+'
+                            ]
+                        ]
+                    ],
+                    'add' => [
+                        'type' => 'literal',
+                        'options' => [
+                            'route' => '/add',
+                            'defaults' => [
+                                'controller' => 'TratamentoIndicacaoWrite',
+                                'action' => 'add'
+                            ]
+                        ]
                     ]
                 ]
             ]
