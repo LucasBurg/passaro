@@ -70,7 +70,7 @@ return array(
                 'type'     => 'gettext',
                 'base_dir' => __DIR__ . '/../language',
                 'pattern'  => '%s.mo',
-            ),
+            )
         ),
     ),
     'controllers' => array(
