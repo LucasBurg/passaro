@@ -26,8 +26,8 @@ $this->headTitle($title);
             <tbody>
                 <?php 
                     foreach ($this->prescricoes as $prescricao) : 
-                        $url = $this->url('tratamento_prescricao/edit', ['id' => $prescricao->id]); 
-                        $urlDelete = $this->url('tratamento_prescricao/delete', ['id' => $prescricao->id]);
+                        $url        = $this->url('tratamento_prescricao/edit', ['id' => $prescricao->id]); 
+                        $urlDelete  = $this->url('tratamento_prescricao/delete', ['id' => $prescricao->id]);
                 ?>
                 <tr>
                     <td class="text-center"><?=$prescricao->id?></td>

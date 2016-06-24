@@ -10,12 +10,13 @@ return [
     ],    
     'controllers' => [
         'invokables' => [
-            'TratamentoIndicacaoIndex' => 'TratamentoIndicacao\Controller\IndexController',
-            'TratamentoIndicacaoWrite' => 'TratamentoIndicacao\Controller\WriteController',
-            'TratamentoIndicacaoDelete' => 'TratamentoIndicacao\Controller\DeleteController',
-            'TratamentoPrescricaoIndex' => 'TratamentoPrescricao\Controller\IndexController',
-            'TratamentoPrescricaoWrite' => 'TratamentoPrescricao\Controller\WriteController',
-            'TratamentoPrescricaoDelete' => 'TratamentoPrescricao\Controller\DeleteController'
+            'TratamentoIndicacaoIndex'   => 'TratamentoIndicacao\Controller\IndexController',
+            'TratamentoIndicacaoWrite'   => 'TratamentoIndicacao\Controller\WriteController',
+            'TratamentoIndicacaoDelete'  => 'TratamentoIndicacao\Controller\DeleteController',
+            'TratamentoPrescricaoIndex'  => 'TratamentoPrescricao\Controller\IndexController',
+            'TratamentoPrescricaoWrite'  => 'TratamentoPrescricao\Controller\WriteController',
+            'TratamentoPrescricaoDelete' => 'TratamentoPrescricao\Controller\DeleteController',
+            'TratamentoPrescricaoVinculaIndex' => 'TratamentoPrescricaoVincula\Controller\IndexController'
         ]
     ],
     'view_manager' => [
@@ -111,6 +112,52 @@ return [
                             'route' => '/delete/:id',
                             'defaults' => [
                                 'controller' => 'TratamentoPrescricaoDelete',
+                                'action' => 'delete'
+                            ]
+                        ]
+                    ]
+                ]
+            ],
+            'tratamento_prescricao_vincula' => [
+                'type' => 'literal',
+                'options' => [
+                    'route' => '/tratamento_prescricao_vinculacoes',
+                    'defaults' => [
+                        'controller' => 'TratamentoPrescricaoVinculaIndex',
+                        'action' => 'index'
+                    ]
+                ],
+                'may_terminate' => true,
+                'child_routes' => [
+                    'edit' => [
+                        'type' => 'segment',
+                        'options' => [
+                            'route' => '/edit/:id',
+                            'defaults' => [
+                                'controller' => 'TratamentoPrescricaoVinculaWrite',
+                                'action' => 'edit'
+                            ],
+                            'constraints' => [
+                                'id' => '[0-9]+'
+                            ]
+                        ]
+                    ],
+                    'add' => [
+                        'type' => 'literal',
+                        'options' => [
+                            'route' => '/add',
+                            'defaults' => [
+                                'controller' => 'TratamentoPrescricaoVinculaWrite',
+                                'action' => 'add'
+                            ]
+                        ]
+                    ],
+                    'delete' => [
+                        'type' => 'segment',
+                        'options' => [
+                            'route' => '/delete/:id',
+                            'defaults' => [
+                                'controller' => 'TratamentoPrescricaoVinculaDelete',
                                 'action' => 'delete'
                             ]
                         ]

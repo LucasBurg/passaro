@@ -14,6 +14,7 @@ class Module
                 'namespaces' => [
                     'TratamentoIndicacao' => __DIR__ . '/src/TratamentoIndicacao',
                     'TratamentoPrescricao' => __DIR__ . '/src/TratamentoPrescricao',
+                    'TratamentoPrescricaoVincula' => __DIR__ . '/src/TratamentoPrescricaoVincula',
                 ]
             ]
         ];
