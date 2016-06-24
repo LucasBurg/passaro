@@ -1,0 +1,23 @@
+<?php
+$title = 'Deletar uma prescrição de tratamento';
+$this->headTitle($title);
+?>
+<div class="row">
+    <div class="col-md-12">
+        <h1><?=$title?></h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+    <?php
+        $url = $this->url('tratamento_prescricao/delete', ['id' => $id]);
+    ?>
+        <form method="post" name="delete" action="<?=$url?>">
+            <input type="hidden" value="<?=$id?>">
+            <p>Você gostaria de deletar o registro <b><?=$id.' - '.$nome?></b>?</p>
+            <button type="submit" name="delete" value="S" class="btn btn-danger">Sim</button>
+            <button type="submit" name="delete" value="N" class="btn btn-default">Não</button>
+        </form>
+    </div>
+</div>
+

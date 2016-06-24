@@ -13,6 +13,7 @@ class Module
             'Zend\Loader\StandardAutoloader' => [
                 'namespaces' => [
                     'TratamentoIndicacao' => __DIR__ . '/src/TratamentoIndicacao',
+                    'TratamentoPrescricao' => __DIR__ . '/src/TratamentoPrescricao',
                 ]
             ]
         ];

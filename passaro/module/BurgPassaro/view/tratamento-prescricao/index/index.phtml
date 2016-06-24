@@ -1,0 +1,45 @@
+<?php 
+$title = 'Lista de Prescrições para o tratamento';
+$this->headTitle($title);
+?>
+<div class="row">
+    <div class="col-md-12">
+        <h1><?=$title?></h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <a href="<?=$this->url('tratamento_prescricao/add', [])?>" class="btn btn-default">Adicionar uma prescrição</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="col-md-1 text-center">ID</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th class="col-md-2 text-center">#</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+                    foreach ($this->prescricoes as $prescricao) : 
+                        $url = $this->url('tratamento_prescricao/edit', ['id' => $prescricao->id]); 
+                        $urlDelete = $this->url('tratamento_prescricao/delete', ['id' => $prescricao->id]);
+                ?>
+                <tr>
+                    <td class="text-center"><?=$prescricao->id?></td>
+                    <td><?=$prescricao->nome?></td>
+                    <td><?=$prescricao->descricao?></td>
+                    <td>
+                        <a href="<?=$url?>" class="btn btn-default">Editar</a>
+                        <a href="<?=$urlDelete?>" class="btn btn-danger">Deletar</a>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
