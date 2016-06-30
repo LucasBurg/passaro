@@ -1,6 +1,7 @@
 <?php 
 $title = 'Lista de vinculos entre prescrições e indicações';
 $this->headTitle($title);
+$this->inlineScript()->appendFile('/scripts/burg-passaro/tratamento-prescricao-vincula/script.js');
 ?>
 <div class="row">
     <div class="col-md-12">
@@ -13,21 +14,24 @@ $this->headTitle($title);
             <div class="row">
                 <div class="col-md-3">
                     <label>Prescrição</label>
-                    <input type="text" name="txt1" class="form-control" >
+                    <select name="sel1" id="sel1" class="form-control">
+                        <option>---</option>
+                    </select>
                 </div>
-                
                 <div class="col-md-3">
                     <label>Indicação</label>
-                    <input type="text" name="txt2" class="form-control" >
+                    <select name="sel2" id="sel2" class="form-control">
+                        <option>---</option>
+                    </select>
                 </div>
-                
                 <div class="col-md-3">
                     <label>Duração</label>
-                    <input type="text" name="txt3" class="form-control" >
+                    <select name="sel3" id="sel3" class="form-control">
+                        <option>---</option>
+                    </select>
                 </div>
-                
                 <div class="col-md-3" style="position: relative;">
-                    <input type="button" name="btnAdd" value="Adicionar" class="btn btn-primary" style="position: absolute; top: 25px;"> 
+                    <input type="button" name="btnAdd" id="btnAdd" value="Adicionar" class="btn btn-primary" style="position: absolute; top: 25px;"> 
                 </div>
             </div>
         </form>
