@@ -1,27 +1,28 @@
 <?php
-namespace TratamentoPrescricao\Controller;
+namespace TratamentoPrescricaoVincula\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
-    protected $tratamentoPrescricaoTable;
+    protected $tratamentoPrescricaoVinculaTable;
     
     public function indexAction()
     {
-        $table = $this->getTratamentoPrescricaoTable();
-        $data = ['prescricoes' => $table->fetchAll()];
+        //$table = $this->getTratamentoPrescricaoVinculaTable();
+        //$data = ['vinculacoes' => $table->fetchAll()];
+        $data = ['vinculacoes' => ''];
         return new ViewModel($data);
     }
     
-    private function getTratamentoPrescricaoTable()
+    private function getTratamentoPrescricaoVinculaTable()
     {
-        if ($this->tratamentoPrescricaoTable) {
-            return $this->tratamentoPrescricaoTable;
+        if ($this->tratamentoPrescricaoVinculaTable) {
+            return $this->tratamentoPrescricaoVinculaTable;
         }
-        $this->tratamentoPrescricaoTable = $this->getServiceLocator()->get('TratamentoPrescricaoTable');
-        return $this->tratamentoPrescricaoTable;
+        $this->tratamentoPrescricaoVinculaTable = $this->getServiceLocator()->get('TratamentoPrescricaoVinculaTable');
+        return $this->tratamentoPrescricaoVinculaTable;
     }
 }
 
