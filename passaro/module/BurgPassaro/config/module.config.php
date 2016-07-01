@@ -1,5 +1,13 @@
 <?php
 return [
+    'view_manager' => [
+        'template_path_stack' => [
+            'burg_passaro' => __DIR__ . '/../view',
+        ],
+        'strategies' => [
+            'ViewJsonStrategy'    
+        ]
+    ],
     'service_manager' => [
         'factories' => [
             'TratamentoIndicacaoTableGateway'  => 'TratamentoIndicacao\Factory\TratamentoIndicacaoTableGatewayFactory',
@@ -18,19 +26,22 @@ return [
             'TratamentoPrescricaoIndex'  => 'TratamentoPrescricao\Controller\IndexController',
             'TratamentoPrescricaoWrite'  => 'TratamentoPrescricao\Controller\WriteController',
             'TratamentoPrescricaoDelete' => 'TratamentoPrescricao\Controller\DeleteController',
-            'TratamentoPrescricaoVinculaIndex' => 'TratamentoPrescricaoVincula\Controller\IndexController'
-        ]
-    ],
-    'view_manager' => [
-        'template_path_stack' => [
-            'burg_passaro' => __DIR__ . '/../view',
-        ],
-        'strategies' => [
-            'ViewJsonStrategy'    
+            'TratamentoPrescricaoVinculaIndex' => 'TratamentoPrescricaoVincula\Controller\IndexController',
+            'TratamentoDuracao' => 'TratamentoDuracao\Controller\IndexController'
         ]
     ],
     'router' => [
         'routes' => [
+            'tratamento_duracao' => [
+                'type' => 'literal',
+                'options' => [
+                    'route' => '/tratamento_duracoes',
+                    'defaults' => [
+                        'controller' => 'TratamentoDuracao',
+                        'action' => 'index'
+                    ]
+                ]
+            ],
             'tratamento_indicacao' => [
                 'type' => 'literal',
                 'options' => [

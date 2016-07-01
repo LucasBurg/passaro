@@ -12,9 +12,10 @@ class Module
         return [
             'Zend\Loader\StandardAutoloader' => [
                 'namespaces' => [
-                    'TratamentoIndicacao' => __DIR__ . '/src/TratamentoIndicacao',
-                    'TratamentoPrescricao' => __DIR__ . '/src/TratamentoPrescricao',
+                    'TratamentoIndicacao'         => __DIR__ . '/src/TratamentoIndicacao',
+                    'TratamentoPrescricao'        => __DIR__ . '/src/TratamentoPrescricao',
                     'TratamentoPrescricaoVincula' => __DIR__ . '/src/TratamentoPrescricaoVincula',
+                    'TratamentoDuracao'           => __DIR__ . '/src/TratamentoDuracao',
                 ]
             ]
         ];
