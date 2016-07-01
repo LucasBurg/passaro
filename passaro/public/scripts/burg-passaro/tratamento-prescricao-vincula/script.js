@@ -21,6 +21,7 @@ $(function(){
     
     $btnAdd.prop('disabled', true).addClass('disabled');
     
+    
     $.get('/tratamento_prescricao_vinculacoes')
     .done(function(data){
         console.log(data);

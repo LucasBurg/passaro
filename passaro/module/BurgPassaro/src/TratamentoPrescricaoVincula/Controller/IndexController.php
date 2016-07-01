@@ -3,7 +3,7 @@ namespace TratamentoPrescricaoVincula\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Zend\Json\Json;
+use Zend\View\Model\JsonModel;
 
 class IndexController extends AbstractActionController
 {
@@ -14,20 +14,13 @@ class IndexController extends AbstractActionController
         //$table = $this->getTratamentoPrescricaoVinculaTable();
         //$data = ['vinculacoes' => $table->fetchAll()];
         $data = ['vinculacoes' => ''];
-        
         $req = $this->getRequest();
-        $res = $this->getResponse();
-        
-        $model = new ViewModel($data);
-        
-        $model->setTerminal($req->isXmlHttpRequest());
         
         if ($req->isXmlHttpRequest()) {
-            $res->setContent(Json::encode(['nome' => 'Lucas']));
-            $model = $res;
+            return new JsonModel(['nome' => 'Lucas', 'idade' => 21]);
         }
         
-        return $model;
+        return new ViewModel($data);
     }
     
     private function getTratamentoPrescricaoVinculaTable()

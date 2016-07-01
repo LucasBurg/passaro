@@ -22,6 +22,9 @@ return [
     'view_manager' => [
         'template_path_stack' => [
             'burg_passaro' => __DIR__ . '/../view',
+        ],
+        'strategies' => [
+            'ViewJsonStrategy'    
         ]
     ],
     'router' => [
