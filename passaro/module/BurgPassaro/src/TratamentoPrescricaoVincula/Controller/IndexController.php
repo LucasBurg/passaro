@@ -11,15 +11,12 @@ class IndexController extends AbstractActionController
     
     public function indexAction()
     {
-        
         $req = $this->getRequest();
-        
         if ($req->isXmlHttpRequest()) {
             $table = $this->getTratamentoPrescricaoVinculaTable();
             $data = $table->fetchAll();
             return new JsonModel($data);
         }
-        
         return new ViewModel();
     }
     

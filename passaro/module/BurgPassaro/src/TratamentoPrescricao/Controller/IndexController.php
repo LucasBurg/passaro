@@ -11,8 +11,14 @@ class IndexController extends AbstractActionController
     public function indexAction()
     {
         $table = $this->getTratamentoPrescricaoTable();
-        $data = ['prescricoes' => $table->fetchAll()];
-        return new ViewModel($data);
+        
+        $data = $table->fetchAll();
+        
+        if ($this->getRequest()->isXmlHttpRequest()) {
+            return new \Zend\View\Model\JsonModel($data);
+        }
+        
+        return new ViewModel(['prescricoes' => $data]);
     }
     
     private function getTratamentoPrescricaoTable()
