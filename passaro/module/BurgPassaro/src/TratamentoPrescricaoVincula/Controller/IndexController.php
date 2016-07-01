@@ -11,16 +11,16 @@ class IndexController extends AbstractActionController
     
     public function indexAction()
     {
-        //$table = $this->getTratamentoPrescricaoVinculaTable();
-        //$data = ['vinculacoes' => $table->fetchAll()];
-        $data = ['vinculacoes' => ''];
+        
         $req = $this->getRequest();
         
         if ($req->isXmlHttpRequest()) {
-            return new JsonModel(['nome' => 'Lucas', 'idade' => 21]);
+            $table = $this->getTratamentoPrescricaoVinculaTable();
+            $data = $table->fetchAll();
+            return new JsonModel($data);
         }
         
-        return new ViewModel($data);
+        return new ViewModel();
     }
     
     private function getTratamentoPrescricaoVinculaTable()
