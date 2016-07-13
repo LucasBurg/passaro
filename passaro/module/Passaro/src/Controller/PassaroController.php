@@ -1,20 +1,28 @@
 <?php
-
 namespace Passaro\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Passaro\Form\PassaroForm;
 use Passaro\Model\Passaro;
 
+use Passaro\Model\PassaroTable;
+use Especie\Model\EspecieTable;
+
 class PassaroController extends AbstractActionController
 {
     private $passaroTable;
     
     private $especieTable;
-
+    
+    public function __construct(PassaroTable $passaroTable, EspecieTable $especieTable)
+    {
+        $this->passaroTable = $passaroTable;
+        $this->especieTable = $especieTable;
+    }
+    
     public function indexAction()
     {
-        $passaros = $this->getPassaroTable()->fetchAll();
+        $passaros = $this->passaroTable->fetchAll();
         return ['passaros' => $passaros];
     }
     
@@ -23,13 +31,13 @@ class PassaroController extends AbstractActionController
         $form = new PassaroForm();
         $entity = new Passaro();
         $form->bind($entity);
-        $especieTable = $this->getEspecieTable();
+        $especieTable = $this->especieTable;
         $optionsSelect = $especieTable->fetchOptionsSelect();
         $form->get('especie_id')->setValueOptions($optionsSelect);
         $req = $this->getRequest();
         if ($req->isPost()) {
             if ($this->saveAction($form, $entity, $req)) {
-                $id = (int) $this->getPassaroTable()->getLastId();
+                $id = (int) $this->passaroTable->getLastId();
                 return $this->redirect()->toRoute('passaros', 
                         ['action' => 'edit', 'id' => $id]);
             }
@@ -43,10 +51,10 @@ class PassaroController extends AbstractActionController
         if (!$id) {
             return $this->redirect()->toRoute('passaros', ['action' => 'add']);
         }
-        $passaro = $this->getPassaroTable()->fetchOne($id); 
+        $passaro = $this->passaroTable->fetchOne($id); 
         $form = new PassaroForm();
         $form->bind($passaro);
-        $especieTable = $this->getEspecieTable();
+        $especieTable = $this->especieTable;
         $optionsSelect = $especieTable->fetchOptionsSelect();
         $form->get('especie_id')->setValueOptions($optionsSelect);
         $req = $this->getRequest();
@@ -60,14 +68,14 @@ class PassaroController extends AbstractActionController
     public function deleteAction()
     {
         $id = (int) $this->params()->fromRoute('id');
-        $passaro = $this->getPassaroTable()->fetchOne($id);
+        $passaro = $this->passaroTable->fetchOne($id);
         if (!$passaro) {
             return $this->redirect()->toRoute('passaros');
         }
         $req = $this->getRequest();
         if ($req->isPost()) {
             if ($req->getPost()->get('delete') == 'S') {
-                $this->getPassaroTable()->delete($id);
+                $this->passaroTable->delete($id);
             } 
             $this->redirect()->toRoute('passaros');
         }
@@ -82,33 +90,9 @@ class PassaroController extends AbstractActionController
         $postData = $req->getPost();
         $form->setData($postData);
         if ($form->isValid()) {
-            $this->getPassaroTable()->save($entity);
+            $this->passaroTable->save($entity);
             return true;
         }
         return false;
-    }
-    
-    /**
-     * Retorna o mapper da tabela passaro
-     */
-    private function getPassaroTable() 
-    {
-        if ($this->passaroTable) {
-            return $this->passaroTable;
-        }
-        $this->passaroTable = $this->getServiceLocator()->get('PassaroTable');
-        return $this->passaroTable;
-    }
-    
-    /**
-     * Retorna o mapper da tabela especie
-     */
-    private function getEspecieTable()
-    {
-        if ($this->especieTable) {
-            return $this->especieTable; 
-        }
-        $this->especieTable = $this->getServiceLocator()->get('EspecieTable');
-        return $this->especieTable;
     }
 }

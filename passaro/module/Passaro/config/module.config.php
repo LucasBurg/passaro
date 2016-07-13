@@ -1,14 +1,17 @@
 <?php
+namespace Passaro;
+
+use Zend\Mvc\Controller\LazyControllerAbstractFactory;
+
 return [
     'service_manager' => [
         'factories' => [
-            'PassaroTableGateway' => 'Passaro\Factory\PassaroTableGatewayFactory',
-            'PassaroTable' => 'Passaro\Factory\PassaroTableFactory',
+            Model\PassaroTable::class => Factory\PassaroTableFactory::class
         ]
     ],
     'controllers' => [
-        'invokables' => [
-            'Passaro\Controller\Passaro' => 'Passaro\Controller\PassaroController',
+        'factories' => [
+            Controller\PassaroController::class => LazyControllerAbstractFactory::class
         ]
     ],
     'view_manager' => [
@@ -23,7 +26,7 @@ return [
                 'options' => [
                     'route' => '/passaros[/:action[/:id]]',
                     'defaults' => [
-                        'controller' => 'Passaro\Controller\Passaro',
+                        'controller' => Controller\PassaroController::class,
                         'action' => 'index'
                     ],
                     'constraints' => [

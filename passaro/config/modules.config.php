@@ -20,5 +20,6 @@ return [
     'Zend\Router',
     'Zend\Validator',
     'Application',
-    'Especie'
+    'Especie',
+    'Passaro'
 ];
