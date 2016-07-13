@@ -23,8 +23,8 @@
     "autoload": {
         "psr-4": {
             "Application\\": "module/Application/src/",
-            "Especie\\": "module/Especie/src"
-            
+            "Especie\\": "module/Especie/src",
+            "Passaro\\": "module/Passaro/src"
         }
     },
     "autoload-dev": {
