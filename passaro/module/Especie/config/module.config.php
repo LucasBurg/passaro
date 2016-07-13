@@ -1,15 +1,18 @@
 <?php
+namespace Especie;
+
+use Zend\Mvc\Controller\LazyControllerAbstractFactory;
+
 return [
     'service_manager' => [
         'factories' => [
-            'EspecieTableGateway' => 'Especie\Factory\EspecieTableGatewayFactory',
-            'EspecieTable' => 'Especie\Factory\EspecieTableFactory'
+            Model\EspecieTable::class => Factory\EspecieTableFactory::class
         ]
     ],    
     'controllers' => [
-        'invokables' => [
-            'Especie\Controller\Especie' => 'Especie\Controller\EspecieController'
-        ]
+        'factories' => [
+            Controller\EspecieController::class => LazyControllerAbstractFactory::class
+        ],
     ],
     'view_manager' => [
         'template_path_stack' => [
@@ -23,7 +26,7 @@ return [
                 'options' => [
                     'route' => '/especies',
                     'defaults' => [
-                        'controller' => 'Especie\Controller\Especie',
+                        'controller' => Controller\EspecieController::class,
                         'action' => 'index'
                     ]
                 ],
