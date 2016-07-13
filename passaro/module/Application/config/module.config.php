@@ -9,6 +9,11 @@
 
 namespace Application;
 
+
+use Zend\ServiceManager\Factory\InvokableFactory;
+use Zend\Router\Http\Literal;
+use Zend\Router\Http\Segment;
+
 return array(
     'router' => array(
         'routes' => array(
@@ -54,15 +59,6 @@ return array(
 //            ),
         ),
     ),
-    'service_manager' => array(
-        'abstract_factories' => array(
-            'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
-            'Zend\Log\LoggerAbstractServiceFactory',
-        ),
-        'factories' => array(
-            'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
-        ),
-    ),
     'translator' => array(
         'locale' => 'pt_BR',
         'translation_file_patterns' => array(
@@ -74,9 +70,9 @@ return array(
         ),
     ),
     'controllers' => array(
-        'invokables' => array(
-            'Application\Controller\Index' => Controller\IndexController::class
-        ),
+        'factories' => [
+            Controller\IndexController::class => InvokableFactory::class,
+        ]
     ),
     'view_manager' => array(
         'display_not_found_reason' => true,

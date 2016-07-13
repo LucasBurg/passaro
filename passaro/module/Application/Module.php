@@ -24,10 +24,10 @@ class Module
         $moduleRouteListener->attach($eventManager);
         
         
-        $translator = $e->getApplication()->getServiceManager()->get('translator');
-        $translator->addTranslationFile('phpArray', 
-                '.\vendor\zendframework\zend-i18n-resources\languages\pt_BR\Zend_Validate.php');
-        AbstractValidator::setDefaultTranslator(new Translator($translator));
+        //$translator = $e->getApplication()->getServiceManager()->get('translator');
+        //$translator->addTranslationFile('phpArray', 
+          //      '.\vendor\zendframework\zend-i18n-resources\languages\pt_BR\Zend_Validate.php');
+        //AbstractValidator::setDefaultTranslator(new Translator($translator));
         
         
     }
