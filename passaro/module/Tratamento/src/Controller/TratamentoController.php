@@ -1,9 +1,7 @@
 <?php
-
 namespace Tratamento\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
-
 use Tratamento\Form\TratamentoForm;
 use Tratamento\Model\TratamentoTable;
 

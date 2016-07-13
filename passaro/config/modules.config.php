@@ -21,5 +21,6 @@ return [
     'Zend\Validator',
     'Application',
     'Especie',
-    'Passaro'
+    'Passaro',
+    'Tratamento'
 ];
