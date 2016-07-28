@@ -25,6 +25,16 @@ return [
             [
                 'label' => 'Pássaros',
                 'route' => 'passaros'
+            ],
+            [
+                'label' => 'Tratamentos',
+                'route' => 'tratamentos',
+                'pages' => [
+                    [
+                        'label' => 'Durações',
+                        'route' => 'tratamento_duracao'
+                    ]
+                ]
             ]
         ]
     ],

@@ -36,13 +36,13 @@
                         <img src="<?= $this->basePath('img/zf-logo.png') ?>" alt="Zend Framework <?= \Application\Module::VERSION ?>"/>&nbsp;Skeleton Application
                     </a>
                 </div>
-                
-                
                 <div class="collapse navbar-collapse">
-                    <?= $this->navigation('Zend\Navigation\Default')->menu()->setUlClass('nav navbar-nav') ?>
+                    <?php 
+                        $partial = ['layout/part-menu.phtml', 'default']; 
+                        $this->navigation('navigation')->menu()->setPartial($partial); 
+                        echo $this->navigation('navigation')->menu()->render();
+                    ?>
                 </div>
-                
-                
             </div>
         </nav>
         <div class="container">

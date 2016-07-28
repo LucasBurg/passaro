@@ -14,10 +14,10 @@ return [
     ],
     'service_manager' => [
         'factories' => [
-            'TratamentoIndicacaoTableGateway'  => 'TratamentoIndicacao\Factory\TratamentoIndicacaoTableGatewayFactory',
-            'TratamentoIndicacaoTable'         => 'TratamentoIndicacao\Factory\TratamentoIndicacaoTableFactory',
-            'TratamentoPrescricaoTableGateway' => 'TratamentoPrescricao\Factory\TratamentoPrescricaoTableGatewayFactory',
-            'TratamentoPrescricaoTable'        => 'TratamentoPrescricao\Factory\TratamentoPrescricaoTableFactory',
+            'TratamentoIndicacaoTableGateway'         => 'TratamentoIndicacao\Factory\TratamentoIndicacaoTableGatewayFactory',
+            'TratamentoIndicacaoTable'                => 'TratamentoIndicacao\Factory\TratamentoIndicacaoTableFactory',
+            'TratamentoPrescricaoTableGateway'        => 'TratamentoPrescricao\Factory\TratamentoPrescricaoTableGatewayFactory',
+            'TratamentoPrescricaoTable'               => 'TratamentoPrescricao\Factory\TratamentoPrescricaoTableFactory',
             'TratamentoPrescricaoVinculaTableGateway' => 'TratamentoPrescricaoVincula\Factory\TratamentoPrescricaoVinculaTableGatewayFactory',
             'TratamentoPrescricaoVinculaTable'        => 'TratamentoPrescricaoVincula\Factory\TratamentoPrescricaoVinculaTableFactory'
         ]
