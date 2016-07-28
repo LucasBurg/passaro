@@ -25,7 +25,8 @@
             "Application\\": "module/Application/src/",
             "Especie\\": "module/Especie/src",
             "Passaro\\": "module/Passaro/src",
-            "Tratamento\\": "module/Tratamento/src"
+            "Tratamento\\": "module/Tratamento/src",
+            "BurgPassaro\\": "module/BurgPassaro/src"
         }
     },
     "autoload-dev": {

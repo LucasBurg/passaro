@@ -1,4 +1,8 @@
 <?php
+namespace BurgPassaro;
+
+use Zend\Mvc\Controller\LazyControllerAbstractFactory;
+
 return [
     'view_manager' => [
         'template_path_stack' => [
@@ -19,6 +23,11 @@ return [
         ]
     ],    
     'controllers' => [
+        'factories' => [
+            TratamentoDuracao\Controller\IndexController::class => LazyControllerAbstractFactory::class
+        ],    
+        
+        /*
         'invokables' => [
             'TratamentoIndicacaoIndex'   => 'TratamentoIndicacao\Controller\IndexController',
             'TratamentoIndicacaoWrite'   => 'TratamentoIndicacao\Controller\WriteController',
@@ -27,8 +36,9 @@ return [
             'TratamentoPrescricaoWrite'  => 'TratamentoPrescricao\Controller\WriteController',
             'TratamentoPrescricaoDelete' => 'TratamentoPrescricao\Controller\DeleteController',
             'TratamentoPrescricaoVinculaIndex' => 'TratamentoPrescricaoVincula\Controller\IndexController',
-            'TratamentoDuracao' => 'TratamentoDuracao\Controller\IndexController'
         ]
+         * 
+         */
     ],
     'router' => [
         'routes' => [
@@ -37,7 +47,7 @@ return [
                 'options' => [
                     'route' => '/tratamento_duracoes',
                     'defaults' => [
-                        'controller' => 'TratamentoDuracao',
+                        'controller' => TratamentoDuracao\Controller\IndexController::class,
                         'action' => 'index'
                     ]
                 ]
