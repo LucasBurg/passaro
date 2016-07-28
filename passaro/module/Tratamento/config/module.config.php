@@ -1,15 +1,15 @@
 <?php
+namespace Tratamento;
+
 return [
     'service_manager' => [
         'factories' => [
-            'TratamentoTableGateway' => 'Tratamento\Factory\TratamentoTableGatewayFactory',
-            'TratamentoTable' => 'Tratamento\Factory\TratamentoTableFactory'
+            Model\TratamentoTable::class => Factory\TratamentoTableFactory::class 
         ]
     ],
     'controllers' => [
         'factories' => [
-            'Tratamento\Controller\Tratamento' => 'Tratamento\Factory\TratamentoControllerFactory',
-            'Periodo\Controller\Periodo' => 'Periodo\Factory\PeriodoControllerFactory'
+            Controller\TratamentoController::class => Factory\TratamentoControllerFactory::class
         ]
     ],
     'view_manager' => [
@@ -24,21 +24,7 @@ return [
                 'options' => [
                     'route' => '/tratamentos[/:action[/:id]]',
                     'defaults' => [
-                        'controller' => 'Tratamento\Controller\Tratamento',
-                        'action' => 'index'
-                    ],
-                    'constraints' => [
-                        'action' => '(add|edit|delete)',
-                        'id' => '[0-9]+'
-                    ]
-                ]
-            ],
-            'periodos' => [
-                'type' => 'segment',
-                'options' => [
-                    'route' => '/periodos[/:action[/:id]]',
-                    'defaults' => [
-                        'controller' => 'Periodo\Controller\Periodo',
+                        'controller' => Controller\TratamentoController::class,
                         'action' => 'index'
                     ],
                     'constraints' => [

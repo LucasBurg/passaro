@@ -1,25 +1,24 @@
 <?php
-
 namespace Tratamento\Factory;
 
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Interop\Container\ContainerInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
 
 use Tratamento\Form\TratamentoForm;
 use Tratamento\Form\TratamentoFilter;
 use Tratamento\Model\Tratamento;
 use Tratamento\Controller\TratamentoController;  
+use Tratamento\Model\TratamentoTable;
 
 class TratamentoControllerFactory implements FactoryInterface
 {
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
+        $tratamentoTable = $container->get(TratamentoTable::class);
         $form = new TratamentoForm();
         $form->setInputFilter(new TratamentoFilter());
         $form->bind(new Tratamento());
-        $tratamentotable = $serviceLocator->getServiceLocator()->get('TratamentoTable');
-        return new TratamentoController($form, $tratamentotable);
+        return new TratamentoController($form, $tratamentoTable);
     }
-
 }
 

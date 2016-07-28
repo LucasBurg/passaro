@@ -12,16 +12,34 @@
  */
 
 return [
-    'db' => [
-        'driver' => 'Pdo',
-        'dsn' => 'mysql:dbname=passaro;host=127.0.0.1',
-        'driver_options' => [
-            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
+    'navigation' => [
+        'default' => [
+            [
+                'label' => 'Home',
+                'route' => 'home'
+            ],
+            [
+                'label' => 'Espécies',
+                'route' => 'especies'
+            ],
+            [
+                'label' => 'Pássaros',
+                'route' => 'passaros'
+            ]
         ]
     ],
     'service_manager' => [
         'factories' => [
-            'ZendDbAdapter' => 'Zend\Db\Adapter\AdapterServiceFactory'
+            'navigation' => Zend\Navigation\Service\DefaultNavigationFactory::class
         ]
-    ]
+    ],
+    'db' => [
+        'adapters' => [
+            'Passaro\Db\Adapter' => [
+                'driver' => 'Pdo',
+                'dsn' => 'mysql:dbname=passaro;host=localhost;charset=utf8'
+            ]
+        ]
+    ],
+    
 ];
