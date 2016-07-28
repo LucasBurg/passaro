@@ -12,6 +12,27 @@
  */
 
 return [
+    'navigation' => [
+        'default' => [
+            [
+                'label' => 'Home',
+                'route' => 'home'
+            ],
+            [
+                'label' => 'Espécies',
+                'route' => 'especies'
+            ],
+            [
+                'label' => 'Pássaros',
+                'route' => 'passaros'
+            ]
+        ]
+    ],
+    'service_manager' => [
+        'factories' => [
+            'navigation' => Zend\Navigation\Service\DefaultNavigationFactory::class
+        ]
+    ],
     'db' => [
         'adapters' => [
             'Passaro\Db\Adapter' => [
@@ -19,5 +40,6 @@ return [
                 'dsn' => 'mysql:dbname=passaro;host=localhost;charset=utf8'
             ]
         ]
-    ]
+    ],
+    
 ];

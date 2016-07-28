@@ -11,6 +11,7 @@
  * This should be an array of module namespaces used in the application.
  */
 return [
+    'Zend\Navigation',
     'Zend\I18n',
     'Zend\Form',
     'Zend\InputFilter',
@@ -19,6 +20,7 @@ return [
     'Zend\Db',
     'Zend\Router',
     'Zend\Validator',
+    //Meus modulos
     'Application',
     'Especie',
     'Passaro',
