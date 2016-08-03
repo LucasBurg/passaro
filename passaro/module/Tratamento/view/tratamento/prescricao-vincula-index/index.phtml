@@ -1,0 +1,61 @@
+<?php 
+$title = 'Lista de vinculos entre prescrições e indicações';
+$this->headTitle($title);
+$this->inlineScript()->prependFile('/scripts/prescricao-vincula.js');
+
+?>
+<div class="row">
+    <div class="col-md-12">
+        <h1><?=$title?></h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <form class="form">
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Prescrição</label>
+                    <select name="sel1" id="sel1" class="form-control">
+                        <option>---</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label>Indicação</label>
+                    <select name="sel2" id="sel2" class="form-control">
+                        <option>---</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label>Duração</label>
+                    <select name="sel3" id="sel3" class="form-control">
+                        <option>---</option>
+                    </select>
+                </div>
+                <div class="col-md-3" style="position: relative;">
+                    <input type="button" name="btnAdd" id="btnAdd" value="Adicionar" class="btn btn-primary" style="position: absolute; top: 25px;"> 
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h1>Vinculos cadastrados</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table" id="vinculacoesTable">
+            <thead>
+                <tr>
+                    <th>ID Prescrição</th>
+                    <th>ID Indicação</th>
+                    <th>ID Duração</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+

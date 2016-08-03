@@ -29,12 +29,6 @@ return [
             [
                 'label' => 'Tratamentos',
                 'route' => 'tratamentos',
-                'pages' => [
-                    [
-                        'label' => 'Durações',
-                        'route' => 'tratamento_duracao'
-                    ]
-                ]
             ]
         ]
     ],

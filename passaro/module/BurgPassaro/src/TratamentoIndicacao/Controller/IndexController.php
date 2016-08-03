@@ -1,5 +1,5 @@
 <?php
-namespace TratamentoIndicacao\Controller;
+namespace BurgPassaro\TratamentoIndicacao\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;

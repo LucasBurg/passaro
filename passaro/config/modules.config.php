@@ -24,6 +24,5 @@ return [
     'Application',
     'Especie',
     'Passaro',
-    'Tratamento',
-    'BurgPassaro'
+    'Tratamento'
 ];

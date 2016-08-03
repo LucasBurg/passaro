@@ -6,7 +6,7 @@ use Zend\Mvc\Controller\LazyControllerAbstractFactory;
 return [
     'view_manager' => [
         'template_path_stack' => [
-            'burg_passaro' => __DIR__ . '/../view',
+            __DIR__ . '/../view',
         ],
         'strategies' => [
             'ViewJsonStrategy'    
@@ -24,7 +24,8 @@ return [
     ],    
     'controllers' => [
         'factories' => [
-            TratamentoDuracao\Controller\IndexController::class => LazyControllerAbstractFactory::class
+            TratamentoDuracao\Controller\IndexController::class => LazyControllerAbstractFactory::class,
+            TratamentoIndicacao\Controller\IndexController::class => LazyControllerAbstractFactory::class
         ],    
         
         /*
@@ -57,7 +58,7 @@ return [
                 'options' => [
                     'route' => '/tratamento_indicacoes',
                     'defaults' => [
-                        'controller' => 'TratamentoIndicacaoIndex',
+                        'controller' => TratamentoIndicacao\Controller\IndexController::class,
                         'action' => 'index'
                     ]
                 ],
