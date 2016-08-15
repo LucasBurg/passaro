@@ -9,7 +9,8 @@ return [
         'factories' => [
             Model\TratamentoTable::class => Factory\TratamentoTableFactory::class,
             Model\PrescricaoTable::class => Factory\PrescricaoTableFactory::class,
-            Model\PrescricaoVinculaTable::class => Factory\PrescricaoVinculaTableFactory::class
+            Model\PrescricaoVinculaTable::class => Factory\PrescricaoVinculaTableFactory::class,
+            Model\IndicacaoTable::class => Factory\IndicacaoTableFactory::class
         ]
     ],
     'controllers' => [
@@ -18,7 +19,9 @@ return [
             Controller\PrescricaoIndexController::class => Factory\PrescricaoIndexControllerFactory::class,
             Controller\PrescricaoWriteController::class => Factory\PrescricaoWriteControllerFactory::class,
             Controller\PrescricaoDeleteController::class => Factory\PrescricaoDeleteControllerFactory::class,
-            Controller\PrescricaoVinculaIndexController::class => Factory\PrescricaoVinculaIndexControllerFactory::class
+            Controller\PrescricaoVinculaIndexController::class => Factory\PrescricaoVinculaIndexControllerFactory::class,
+            Controller\IndicacaoIndexController::class => Factory\IndicacaoIndexControllerFactory::class,
+            Controller\IndicacaoWriteController::class => Factory\IndicacaoWriteControllerFactory::class
         ]
     ],
     'view_manager' => [
@@ -136,7 +139,53 @@ return [
                         ]
                     ]
                 ]
-            ]
+            ],
+            'tratamento_indicacoes' => [
+                'type' => Literal::class,
+                'options' => [
+                    'route' => '/tratamento_indicacoes',
+                    'defaults' => [
+                        'controller' => Controller\IndicacaoIndexController::class,
+                        'action' => 'index'
+                    ]
+                ],
+                'may_terminate' => true,
+                'child_routes' => [
+                    'edit' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route' => '/edit/:id',
+                            'defaults' => [
+                                'controller' => Controller\IndicacaoWriteController::class,
+                                'action' => 'edit'
+                            ],
+                            'constraints' => [
+                                'id' => '[0-9]+'
+                            ]
+                        ]
+                    ],
+                    'add' => [
+                        'type' => Literal::class,
+                        'options' => [
+                            'route' => '/add',
+                            'defaults' => [
+                                'controller' => Controller\IndicacaoWriteController::class,
+                                'action' => 'add'
+                            ]
+                        ]
+                    ],
+                    'delete' => [
+                        'type' => 'segment',
+                        'options' => [
+                            'route' => '/delete/:id',
+                            'defaults' => [
+                                'controller' => 'TratamentoIndicacaoDelete',
+                                'action' => 'delete'
+                            ]
+                        ]
+                    ]
+                ]
+            ],
         ]
     ]
 ];
